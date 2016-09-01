@@ -4,26 +4,26 @@ const BASIC_URL = 'http://vulgardetector-api.ttarnawski.usermd.net';
 
 var vm_report;
 var vm_report_content;
-var vm_checked;
-var vm_training_data;
-var vm_grime;
-var vm_efficiency;
+var vm_word;
+var vm_language;
+var vm_text;
+var vm_form;
 
 $(document).ready(function () {
     vm_report = $("#report");
     vm_report_content = $("#report-content");
-    vm_checked = $("#status-checked");
-    vm_training_data = $("#status-training_data");
-    vm_efficiency = $("#status-efficiency");
+    vm_word = $("#status-word");
+    vm_language = $("#status-language");
     vm_text = $("#text");
+    vm_form = $("#form");
     vm_report.hide();
     fetchData();
 });
 
 function fetchData() {
     $.getJSON(BASIC_URL+'/status', function (data) {
-        vm_checked.html(data.checked);
-        vm_training_data.html(data.training_data);
+        vm_word.html(data.words);
+        vm_language.html(data.languages);
         vm_efficiency.html(data.efficiency+'%');
     });
 }
@@ -37,21 +37,19 @@ function check() {
     }
 
     data = {
-        text: textValue,
-        output: "complex"
+        text: textValue
     };
 
-    $.post( BASIC_URL+'/check', JSON.stringify(data))
+    $.post( BASIC_URL, JSON.stringify(data))
         .done(function( response ) {
-            $("#form").hide();
-            vm_report_content.html('<strong>TEXT: </strong>"' + response.text + '" <br> ' +
-                '<strong>PROBABILITY: </strong>' + response.probability + ' <br> ' +
-                '<strong>THRESHOLD: </strong>' + response.threshold + ' <br> ' +
-                '<strong>STATUS: </strong>' + response.status + ' <br> '
-            );
-
+            vm_form.hide();
+            if (response.STATUS == 'DECENT') {
+                vm_report.html('<div class="alert alert-success">Not found vulgar language</div>');
+            }
+            if (response.STATUS == 'VULGAR') {
+                vm_report.html('<div class="alert alert-danger">Found vulgar language</div>');
+            }
             vm_report.show();
-            console.log(response);
         })
         .fail(function( response ) {
             console.log(response);

@@ -49,3 +49,16 @@
     margin-top: 80px;
     margin-bottom: 10px;
 }
+
+.wordpress {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
+}
+.wordpress hr {
+    height: 2px;
+    background-color:#555;
+    width: 15%;
+}
