@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vulgarDetector</title>
+    <title>VulgarDetector</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -15,14 +15,13 @@
         <div class="container nopadding">
             <div class="row">
                 <div class="col-sm-6">
-                    <a href="index.html"><h1><strong>vulgar</strong>detector</h1></a>
+                    <a href="index.html"><h1><strong>Vulgar</strong>Detector</h1></a>
                 </div>
                 <div class="col-sm-6 text-right">
                     <br>
-                    <a href="https://github.com/tarnawski/grime-detector-plugin" target="_blank"><img
-                            src="images\wp.png"></a>
-                    <a href="https://github.com/tarnawski/vulgar-detector-api" target="_blank"><img
-                            src="images\github.png"></a>
+                    <a href="vulgar-detector.zip">
+                    <button class="btn" style="color: white; background-color: black;"><h4><strong>Fu*k vulgar comments and download WP plugin!</strong></h4></button>
+                    </a>
                 </div>
             </div>
             <br><br>
@@ -34,20 +33,18 @@
                     <h2>RESTful application to detect vulgar language in text...</h2>
                     <br>
                     <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-6 text-center">
                             <h1>
-                                <div id="status-language"></div>
+                                <div id="status-requests-today"></div>
                             </h1>
-                            <h3>LANGUAGES</h3>
+                            <h3>REQUEST TODAY</h3>
                         </div>
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-6 text-center">
                             <h1>
-                                <div id="status-word"></div>
+                                <div id="status-requests"></div>
                             </h1>
-                            <h3>DICTIONARY</h3>
+                            <h3>REQUEST TOTAL</h3>
                         </div>
-                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -58,41 +55,170 @@
     <div class="wordpress">
         <a href="https://github.com/tarnawski/grime-detector-plugin" target="_blank"><img
                 src="images\wp.png" class="img-responsive center-block"></a>
-    <h3 class="text-center">You con install <strong>vulgar</strong>detector as Wordpess plugin and focus
-        on more important things that vulgar comments in your site.</h3>
-
-    <hr align="center" width="50%">
+        <h3 class="text-center">You can install <strong>Vulgar</strong>Detector as Wordpress plugin to automatically recognition and flagged as spam comments with vulgar language.
+        <strong>Vulgar</strong>Detector take care your website, so you can focus on more important things than vulgar comments.</h3>
+        <hr align="center" width="50%">
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <h1>Try <strong>vulgar</strong>detector</h1>
-            <br>
-            <div id="form">
-                <form role="form">
-                    <div id="form-group-text" class="form-group">
-                        <label for="text">Text to check (maximum length of 255 characters)</label>
-                        <textarea class="form-control" id="text" rows="4"></textarea>
-                    </div>
-                </form>
-                <button onclick='check()' class="btn btn-default btn-block">Check text</button>
+
+    <br><br>
+    <div class="row center-block">
+        <div class="col-sm-4 text-center">
+            <img src="images\words.jpg" class="center-block">
+            <h3>BIG DATABASE</h3>
+            <h4 class="text-left">
+                The current size of the database allows the effective recognition of vulgar texts. Every month the number of words is growing constantly making applications better and better.
+            </h4>
+        </div>
+        <div class="col-sm-4 text-center">
+            <img src="images\github-logo.png" class="center-block">
+            <h3>OPEN CODE</h3>
+            <h4 class="text-left">
+            Application and Wordpress plugin is completely safe and will not do anything behind your back. All code is open and available on GitHub. For safety, only the database of vulgar words is not publish.
+            </h4>
+        </div>
+        <div class="col-sm-4 text-center">
+            <img src="images\PHP-7.png" class="center-block">
+            <h3>NEW TECHNOLOGY</h3>
+            <h4 class="text-left">It's PHP RESTfull application build on the shoulders of Symfony 3 microframework.
+                All data is stored in MySQL database. The project is based on the latest technologies and tools for example Vagrant, Docker, Behat, PHPSpec and more...</h4>
+        </div>
+    </div>
+    <br><br>
+</div>
+<div class="jumbotron">
+    <div class="container">
+
+        <h1 class="text-left"><strong id="status-word"></strong> SWEAR WORDS IN DICTIONARY</h1>
+        <h1 class="text-left"><strong id="status-language"></strong> LANGUAGES SUPPORT</h1>
+    </div>
+</div>
+<div class="container">
+    <br><br>
+    <h1>How <strong>Vulgar</strong>Detector recognize vulgar text:</h1>
+    <div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li class="active"><a href="#step-1">
+                    <h4 class="list-group-item-heading">Step 1</h4>
+                    <p class="list-group-item-text">Tokenize text into word</p>
+                </a></li>
+                <li><a href="#step-2">
+                    <h4 class="list-group-item-heading">Step 2</h4>
+                    <p class="list-group-item-text">Lowercase tokens</p>
+                </a></li>
+                <li><a href="#step-3">
+                    <h4 class="list-group-item-heading">Step 3</h4>
+                    <p class="list-group-item-text">Remove common stopwords</p>
+                </a></li>
+                <li><a href="#step-4">
+                    <h4 class="list-group-item-heading">Step 4</h4>
+                    <p class="list-group-item-text">Remove duplicates</p>
+                </a></li>
+                <li><a href="#step-5">
+                    <h4 class="list-group-item-heading">Step 5</h4>
+                    <p class="list-group-item-text">Search tokens in database</p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row setup-content" id="step-1">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1>The quick, quick brown fox → [The, quick, quick, brown, fox]</h1>
             </div>
-            <div id="report"></div>
         </div>
-        <div class="col-sm-6">
-            <h1>Basic example of use with jQuery:</h1>
-            <br>
-            <pre>
-
-    $.post('http://vulgardetector-api.ttarnawski.usermd.net', {
-            text: "Lorem ipsum dolor sit amet"
-        })
-        .done(function( data ) {
-            console.log( data );
-        });
-    </pre>
+    </div>
+    <div class="row setup-content" id="step-2">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h1 class="text-center">[The, quick, quick, brown, fox] → [the, quick, quick, brown, fox]</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-3">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h1 class="text-center">[the, quick, quick, brown, fox] → [quick, quick, brown, fox]</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-4">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h1 class="text-center">[quick, quick, brown, fox] → [quick, brown, fox]</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-5">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h1 class="text-center">[quick, brown, fox] → MySQLQuery</h1>
+            </div>
         </div>
     </div>
 
+    <br><br><br>
+    <img src="images\restapi.png" class="center-block">
+    <table class="table table-bordered">
+        <tr>
+            <td style="width: 90px"><strong>DESCRIPTION:</strong></td>
+            <td>Check text</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>URL:</strong></td>
+            <td>http://vulgardetector-api.ttarnawski.usermd.net</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>METHOD</strong></td>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>BODY</strong></td>
+            <td>
+    <pre><code>
+        {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+    </code></pre>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>RESPONSE</strong></td>
+            <td>
+    <pre><code>
+        {
+            "STATUS": "DECENT"    // "DECENT" OR "VULGAR"
+        }
+    </code></pre>
+            </td>
+        </tr>
+    </table>
+    <br><br><br>
+</div>
+<div class="jumbotron">
+    <div class="container">
+
+        <h1 class="text-center">Try <strong>Vulgar</strong>Detector</h1>
+        <br>
+        <div id="report"></div>
+        <div id="form">
+            <form role="form">
+                <div id="form-group-text" class="form-group">
+                    <label for="text">Text to check (maximum length of 512 characters)</label>
+                    <textarea class="form-control" id="text" rows="4"></textarea>
+                </div>
+            </form>
+            <button onclick='check()' class="btn btn-primary btn-block">CHECK TEXT</button>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="container">
+    <br><br>
+    <h1 class="text-center">And the most important - it’s free and always will be!</h1>
     <div class="footer">
         <hr/>
 
